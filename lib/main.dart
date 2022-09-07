@@ -1,3 +1,5 @@
+// Projeto Desenvolvido por Natãn Trennepohl e Rafael Lisot
+
 import 'package:flutter/material.dart';
 import 'package:teste/pages/principal_page.dart';
 
