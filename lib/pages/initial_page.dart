@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teste/data/login_dao.dart';
 import 'package:teste/pages/login_page.dart';
+import 'package:teste/pages/register_page.dart';
 
 class InitialPage extends StatelessWidget {
   const InitialPage({Key? key}) : super(key: key);
@@ -66,7 +67,14 @@ class InitialPage extends StatelessWidget {
                   ),
                   margin: EdgeInsets.all(8),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RegisterPage(),
+                        ),
+                      );
+                    },
                     style: ButtonStyle(
                         elevation: MaterialStatePropertyAll(0),
                         minimumSize: MaterialStateProperty.all(Size(290, 45))),

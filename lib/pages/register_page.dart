@@ -3,15 +3,16 @@ import 'package:teste/Components/user.dart';
 import 'package:teste/data/login_dao.dart';
 import 'package:teste/pages/home_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
@@ -72,6 +73,25 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextFormField(
                       validator: (String? value) {
                         if (valueValidator(value)) {
+                          return 'Insira seu email';
+                        }
+                        return null;
+                      },
+                      controller: emailController,
+                      textAlign: TextAlign.center,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'e-mail para cadastro',
+                        fillColor: Colors.white70,
+                        filled: true,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: TextFormField(
+                      validator: (String? value) {
+                        if (valueValidator(value)) {
                           return 'Insira sua senha';
                         }
                         return null;
@@ -87,19 +107,26 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        LoginDao().find(nameController.text);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomePage(),
-                          ),
-                        );
-                      }
-                    },
-                    child: Text('Entrar'),
-                  ),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          LoginDao().save(
+                            User(nameController.text, emailController.text,
+                                passwordController.text),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Criando novo usuário'),
+                            ),
+                          );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(),
+                            ),
+                          );
+                        }
+                      },
+                      child: Text('Entrar'))
                 ],
               ),
             ),
