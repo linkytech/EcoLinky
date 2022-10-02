@@ -1,6 +1,7 @@
 // Projeto Desenvolvido por Natãn Trennepohl e Rafael Lisot
 
 import 'package:flutter/material.dart';
+import 'package:teste/pages/initial_page.dart';
 import 'package:teste/pages/login_page.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const LoginPage(),
+      home: const InitialPage(),
     );
   }
 }
