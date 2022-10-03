@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:teste/Components/user.dart';
 import 'package:teste/data/login_dao.dart';
+import 'package:teste/Models/user_model.dart';
 import 'package:teste/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,8 +11,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                         }
                         return null;
                       },
-                      controller: nameController,
+                      controller: _nameController,
                       textAlign: TextAlign.center,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                         }
                         return null;
                       },
-                      controller: passwordController,
+                      controller: _passwordController,
                       textAlign: TextAlign.center,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -87,15 +87,19 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        LoginDao().find(nameController.text);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomePage(),
-                          ),
-                        );
+                        List<User> name = await LoginDao().find(_nameController.text);
+                        bool name2 = name.isNotEmpty;
+
+                        if (name2) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(),
+                            ),
+                          );
+                        }
                       }
                     },
                     child: Text('Entrar'),

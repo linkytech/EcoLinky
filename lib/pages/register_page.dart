@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teste/Components/user.dart';
+import 'package:teste/Models/user_model.dart';
 import 'package:teste/data/login_dao.dart';
 import 'package:teste/pages/home_page.dart';
 
@@ -11,9 +11,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -58,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         }
                         return null;
                       },
-                      controller: nameController,
+                      controller: _nameController,
                       textAlign: TextAlign.center,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -77,7 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         }
                         return null;
                       },
-                      controller: emailController,
+                      controller: _emailController,
                       textAlign: TextAlign.center,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -96,7 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         }
                         return null;
                       },
-                      controller: passwordController,
+                      controller: _passwordController,
                       textAlign: TextAlign.center,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -110,9 +110,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           LoginDao().save(
-                            User(nameController.text, emailController.text,
-                                passwordController.text),
+                            User(
+                              _nameController.text,
+                              _emailController.text,
+                              _passwordController.text,
+                            ),
                           );
+                          
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Criando novo usuário'),
