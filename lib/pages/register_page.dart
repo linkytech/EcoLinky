@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teste/Models/user_model.dart';
-import 'package:teste/data/login_dao.dart';
+import 'package:teste/helpers/user_helper.dart';
 import 'package:teste/pages/home_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -11,130 +11,142 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  String _name = "";
+  String _email = "";
+  String _password = "";
 
-  final _formKey = GlobalKey<FormState>();
+  var userHelper = UserHelper();
 
-  bool valueValidator(String? value) {
-    if (value != null && value.isEmpty) {
-      return true;
+  final frmRegisterKey = new GlobalKey<FormState>();
+
+  void _closeRegister() {
+    Navigator.pop(context, true);
+  }
+
+  void _registerUser() async {
+    final form = frmRegisterKey.currentState;
+    await userHelper.open();
+
+    if (form!.validate()) {
+      form.save();
+
+      var user = User(0, _name, _email, _password);
+      user.id = await userHelper.saveUser(user);
+
+      if (user.id > 0) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("Sucesso"),
+              content: Text("Registro realizado com sucesso"),
+            );
+          },
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("Erro"),
+              content: Text("Erro ao registrar usuário"),
+            );
+          },
+        );
+      }
     }
-    return false;
   }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Login'),
-        ),
-        body: Center(
-          child: SingleChildScrollView(
-            child: Container(
-              width: 350,
-              height: 500,
-              decoration: BoxDecoration(
-                color: Colors.green[200],
-                borderRadius: BorderRadius.circular(50),
-                border: Border.all(
-                  width: 3,
-                  color: Colors.green,
+      key: frmRegisterKey,
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                elevation: 8,
+                child: Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "Registrar usuário",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      TextFormField(
+                        onSaved: (val) => _name = val.toString(),
+                        decoration: InputDecoration(labelText: "Nome"),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      TextFormField(
+                        onSaved: (val) => _email = val.toString(),
+                        decoration: InputDecoration(labelText: "E-mail"),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        obscureText: true,
+                        onSaved: (val) => _password = val.toString(),
+                        decoration: InputDecoration(labelText: "Senha"),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Senha deve ter no mínimo 6 caracteres!",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Expanded(
+                            child: Container(),
+                          ),
+                          TextButton(
+                            child: Text("Registrar"),
+                            onPressed: _registerUser,
+                          ),
+                          TextButton(
+                            child: Text("Fechar"),
+                            onPressed: _closeRegister,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: TextFormField(
-                      validator: (String? value) {
-                        if (valueValidator(value)) {
-                          return 'Insira seu nome de usuário';
-                        }
-                        return null;
-                      },
-                      controller: _nameController,
-                      textAlign: TextAlign.center,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Nome de usuário',
-                        fillColor: Colors.white70,
-                        filled: true,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: TextFormField(
-                      validator: (String? value) {
-                        if (valueValidator(value)) {
-                          return 'Insira seu email';
-                        }
-                        return null;
-                      },
-                      controller: _emailController,
-                      textAlign: TextAlign.center,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'e-mail para cadastro',
-                        fillColor: Colors.white70,
-                        filled: true,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: TextFormField(
-                      validator: (String? value) {
-                        if (valueValidator(value)) {
-                          return 'Insira sua senha';
-                        }
-                        return null;
-                      },
-                      controller: _passwordController,
-                      textAlign: TextAlign.center,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Senha de acesso',
-                        fillColor: Colors.white70,
-                        filled: true,
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          LoginDao().save(
-                            User(
-                              _nameController.text,
-                              _emailController.text,
-                              _passwordController.text,
-                            ),
-                          );
-                          
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Criando novo usuário'),
-                            ),
-                          );
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomePage(),
-                            ),
-                          );
-                        }
-                      },
-                      child: Text('Entrar'))
-                ],
-              ),
             ),
-          ),
+          ],
         ),
       ),
     );

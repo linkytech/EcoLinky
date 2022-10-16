@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:teste/data/login_dao.dart';
-import 'package:teste/Models/user_model.dart';
+import 'package:teste/helpers/user_helper.dart';
 import 'package:teste/pages/home_page.dart';
+import 'package:teste/pages/register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,100 +11,124 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  TextStyle style = const TextStyle(fontSize: 20);
 
-  final _formKey = GlobalKey<FormState>();
+  String? _email = "";
+  String? _password = "";
 
-  bool valueValidator(String? value) {
-    if (value != null && value.isEmpty) {
-      return true;
+  var userHelper = UserHelper();
+
+  final frmLoginKey = new GlobalKey<FormState>();
+
+  void _validarLogin() async {
+    await userHelper.open();
+    final form = frmLoginKey.currentState;
+
+    if (form!.validate()) {
+      form.save();
+
+      var u = await userHelper.validateLogin(_email!, _password!);
+
+      if (u != null) {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => HomePage(user: u)));
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              title: Text("Erro durante login"),
+              content: Text("Usuário ou senha incorretos"),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(15),
+                ),
+              ),
+            );
+          },
+        );
+      }
     }
-    return false;
+  }
+
+  openRegister() {
+    showDialog(context: context, builder: (context) => RegisterPage());
   }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Login'),
-        ),
-        body: Center(
-          child: SingleChildScrollView(
-            child: Container(
-              width: 350,
-              height: 500,
-              decoration: BoxDecoration(
-                color: Colors.green[200],
-                borderRadius: BorderRadius.circular(50),
-                border: Border.all(
-                  width: 3,
-                  color: Colors.green,
+    final emailField = TextFormField(
+      style: style,
+      onSaved: (value) => _email = value,
+      validator: (value) {
+        return value!.length < 15
+            ? "Email deve possuir no minimo 15 caracteres"
+            : null;
+      },
+      decoration: InputDecoration(
+          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+          hintText: "E-Mail",
+          labelText: "E-Mail",
+          suffixIcon: Icon(Icons.login),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(32))),
+    );
+    final passwordField = TextFormField(
+      style: style,
+      onSaved: (value) => _password = value,
+      validator: (value) {
+        return value!.length < 6 ? "Senha Inválida" : null;
+      },
+      decoration: InputDecoration(
+          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+          hintText: "Senha",
+          labelText: "Senha",
+          suffixIcon: Icon(Icons.password),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(32),),),
+    );
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            color: Colors.greenAccent,
+            child: Padding(
+              padding: const EdgeInsets.all(36),
+              child: Form(
+                key: frmLoginKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(
+                        height: 155,
+                        child: Image.asset('assets/images/splash.png')),
+                    const SizedBox(
+                      height: 45,
+                    ),
+                    emailField,
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    passwordField,
+                    const SizedBox(
+                      height: 35,
+                    ),
+                    ElevatedButton(
+                      onPressed: _validarLogin,
+                      child: Text("Login", style: style),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextButton(
+                      onPressed: openRegister,
+                      child: const Text(
+                        "Registrar",
+                        style: TextStyle(fontSize: 25, color: Colors.orange),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: TextFormField(
-                      validator: (String? value) {
-                        if (valueValidator(value)) {
-                          return 'Insira seu nome de usuário';
-                        }
-                        return null;
-                      },
-                      controller: _nameController,
-                      textAlign: TextAlign.center,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Nome de usuário',
-                        fillColor: Colors.white70,
-                        filled: true,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: TextFormField(
-                      validator: (String? value) {
-                        if (valueValidator(value)) {
-                          return 'Insira sua senha';
-                        }
-                        return null;
-                      },
-                      controller: _passwordController,
-                      textAlign: TextAlign.center,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Senha de acesso',
-                        fillColor: Colors.white70,
-                        filled: true,
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        List<User> name = await LoginDao().find(_nameController.text);
-                        bool name2 = name.isNotEmpty;
-
-                        if (name2) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomePage(),
-                            ),
-                          );
-                        }
-                      }
-                    },
-                    child: Text('Entrar'),
-                  ),
-                ],
               ),
             ),
           ),

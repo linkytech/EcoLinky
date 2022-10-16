@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:teste/data/login_dao.dart';
 import 'package:teste/pages/login_page.dart';
 import 'package:teste/pages/register_page.dart';
 
