@@ -73,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(32))),
     );
     final passwordField = TextFormField(
+      obscureText: true,
       style: style,
       onSaved: (value) => _password = value,
       validator: (value) {
