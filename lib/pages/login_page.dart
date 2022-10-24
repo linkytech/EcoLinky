@@ -67,7 +67,6 @@ class _LoginPageState extends State<LoginPage> {
       },
       decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "E-Mail",
           labelText: "E-Mail",
           suffixIcon: Icon(Icons.login),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(32))),
@@ -80,11 +79,13 @@ class _LoginPageState extends State<LoginPage> {
         return value!.length < 6 ? "Senha Inválida" : null;
       },
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Senha",
-          labelText: "Senha",
-          suffixIcon: Icon(Icons.password),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(32),),),
+        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        labelText: "Senha",
+        suffixIcon: Icon(Icons.password),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(32),
+        ),
+      ),
     );
     return Scaffold(
       body: SingleChildScrollView(
