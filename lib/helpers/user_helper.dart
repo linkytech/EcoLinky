@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:teste/Models/user_model.dart';
+import 'package:ecolinky/Models/user_model.dart';
 
 // criando o nosso helper
 // camada de persistência

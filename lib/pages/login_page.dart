@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:teste/helpers/user_helper.dart';
-import 'package:teste/pages/home_page.dart';
-import 'package:teste/pages/register_page.dart';
+import 'package:ecolinky/helpers/user_helper.dart';
+import 'package:ecolinky/pages/home_page.dart';
+import 'package:ecolinky/pages/register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

@@ -1,4 +1,4 @@
-package com.example.teste
+package br.com.linkytechnologies.ecolinky
 
 import io.flutter.embedding.android.FlutterActivity
 

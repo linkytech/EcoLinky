@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:teste/Models/user_model.dart';
-import 'package:teste/helpers/user_helper.dart';
-import 'package:teste/pages/home_page.dart';
+import 'package:ecolinky/Models/user_model.dart';
+import 'package:ecolinky/helpers/user_helper.dart';
+import 'package:ecolinky/pages/home_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -19,13 +19,28 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final frmRegisterKey = new GlobalKey<FormState>();
 
-  void _closeRegister() {
+  void _closeRegister() async {
     Navigator.pop(context, true);
+    var u = await userHelper.validateLogin(_email!, _password!);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomePage(user: u),
+      ),
+    );
   }
 
   void _registerUser() async {
     final form = frmRegisterKey.currentState;
     await userHelper.open();
+
+    var u = await userHelper.validateLogin(_email!, _password!);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomePage(user: u),
+      ),
+    );
 
     if (form!.validate()) {
       form.save();

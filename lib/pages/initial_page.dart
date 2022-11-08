@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:teste/pages/login_page.dart';
-import 'package:teste/pages/register_page.dart';
+import 'package:ecolinky/pages/login_page.dart';
+import 'package:ecolinky/pages/register_page.dart';
 
 class InitialPage extends StatelessWidget {
   const InitialPage({Key? key}) : super(key: key);
