@@ -45,7 +45,7 @@ class InitialPage extends StatelessWidget {
                       );
                     },
                     style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll(0),
+                        elevation: MaterialStateProperty.all(0),
                         minimumSize: MaterialStateProperty.all(Size(290, 45))),
                     child: Text(
                       'Entrar',
@@ -75,7 +75,7 @@ class InitialPage extends StatelessWidget {
                       );
                     },
                     style: ButtonStyle(
-                        elevation: MaterialStatePropertyAll(0),
+                        elevation: MaterialStateProperty.all(0),
                         minimumSize: MaterialStateProperty.all(Size(290, 45))),
                     child: Text(
                       'Registrar',

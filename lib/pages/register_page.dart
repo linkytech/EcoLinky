@@ -21,7 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void _closeRegister() async {
     Navigator.pop(context, true);
-    var u = await userHelper.validateLogin(_email!, _password!);
+    var u = await userHelper.validateLogin(_email, _password);
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
@@ -34,7 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
     final form = frmRegisterKey.currentState;
     await userHelper.open();
 
-    var u = await userHelper.validateLogin(_email!, _password!);
+    var u = await userHelper.validateLogin(_email, _password);
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
