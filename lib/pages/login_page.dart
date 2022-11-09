@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Center(
           child: Container(
             height: MediaQuery.of(context).size.height,
-            color: Colors.greenAccent,
+            color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(36),
               child: Form(
@@ -102,7 +102,10 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
-                        height: 155, child: Image.asset('images/eco512.png')),
+                        height: 155,
+                        child: Image(
+                          image: AssetImage('assets/images/eco512.png'),
+                        )),
                     const SizedBox(
                       height: 45,
                     ),

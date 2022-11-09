@@ -1,8 +1,8 @@
 // Projeto Desenvolvido por Natãn Trennepohl e Rafael Lisot
 
+import 'package:ecolinky/pages/splash_page.dart';
+import 'package:ecolinky/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:ecolinky/pages/initial_page.dart';
-import 'package:ecolinky/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,10 +16,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'EcoLinky',
+      routes: routes,
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const InitialPage(),
+      home: SplashPage(),
     );
   }
 }
