@@ -18,8 +18,12 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('EcoLinky'),
       ),
-      body: SingleChildScrollView(
-        child: Explore()
+      body: Column(
+        children: [
+          Flexible(
+            child: Explore(),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -28,12 +32,12 @@ class _HomePageState extends State<HomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.person),
+            label: 'Perfil',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.logout),
+            label: 'Sair',
           ),
         ],
       ),

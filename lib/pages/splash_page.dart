@@ -20,9 +20,7 @@ class _SplashPageState extends State<SplashPage>
   void navegarTelaLogin() {
     // para chamar outra tela
     // utilizamos o objeto Navigator
-    //Navigator.pushReplacementNamed(context, '/login');
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginPage()));
+    Navigator.pushReplacementNamed(context, '/initial');
   }
 
   iniciarSplash() async {

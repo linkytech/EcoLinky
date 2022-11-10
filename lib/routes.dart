@@ -1,3 +1,4 @@
+import 'package:ecolinky/pages/home_page.dart';
 import 'package:ecolinky/pages/initial_page.dart';
 import 'package:ecolinky/pages/login_page.dart';
 import 'package:flutter/material.dart';
@@ -5,5 +6,6 @@ import 'package:flutter/material.dart';
 // rotas de navegação
 final routes = {
   '/login': (BuildContext context) => LoginPage(),
-  '/principal': (BuildContext context) => InitialPage(),
+  '/home': (BuildContext context) => HomePage(),
+  '/initial': (BuildContext context) => InitialPage(),
 };
