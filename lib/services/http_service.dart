@@ -5,31 +5,28 @@ import 'package:ecolinky/Models/user_model.dart';
 import 'package:http/http.dart';
 
 class HttpService {
-  static final String baseUrl = "http://192.168.21.1:3333";
+  static final String baseUrl = "http://192.168.21.1:3333/api";
 
   static Future<List<Tennant>> getTennants() async {
-    Response res = await get(Uri.parse(baseUrl + "/tennants"));
+    Response res = await get(
+      Uri.parse(baseUrl + "/tennant"),
+    );
 
     if (res.statusCode == 200) {
-      print("cheguei aqui");
       List<dynamic> body = jsonDecode(res.body);
-      print(body);
       List<Tennant> tennants = body
           .map(
             (dynamic item) => Tennant.fromJson(item),
           )
           .toList();
-      print("agr to aqui");
       return tennants;
     } else {
-      print("ola");
-      throw "Erro ao recuperar promoções!";
+      throw "Erro ao recuperar tennants!";
     }
   }
 
   static Future<String> createUser(User user) async {
-    Response res = await post(
-      Uri.parse(baseUrl + "/users"),
+    Response res = await post(Uri.parse(baseUrl + "/users"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
