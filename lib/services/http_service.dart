@@ -26,13 +26,12 @@ class HttpService {
   }
 
   static Future<String> createUser(User user) async {
-    Response res = await post(Uri.parse(baseUrl + "/users"),
+    Response res = await post(Uri.parse(baseUrl + "/user"),
         headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
+          'Content-Type': 'application/json',
         },
         body: jsonEncode(user.toMap()));
-
-    if (res.statusCode == 201) {
+    if (res.statusCode == 200) {
       return "User created!";
     } else {
       throw "Error creating user!";

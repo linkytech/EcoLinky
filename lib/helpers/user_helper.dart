@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:ecolinky/services/http_service.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -7,8 +8,8 @@ import 'package:ecolinky/Models/user_model.dart';
 // criando o nosso helper
 // camada de persistência
 class UserHelper {
-  final String databaseName = "kantina.db"; // nome da base
-  final int databaseVersion = 1; // versão da base
+  final String databaseName = "ecolinky.db"; // nome da base
+  final int databaseVersion = 2; // versão da base
   late Database db; // variável que representa o banco
 
   // inicializa o banco de dados
@@ -22,13 +23,15 @@ class UserHelper {
 
   void _onCreate(Database db, int version) async {
     await db.execute(
-        "CREATE TABLE user(id INTEGER PRIMARY KEY autoincrement, name TEXT, email TEXT, password TEXT)");
+        "CREATE TABLE user(id INTEGER PRIMARY KEY autoincrement, name TEXT, cpf TEXT, age TEXT, email TEXT, password TEXT)");
     await db.execute(
-        "insert into user(name, email, password) values('ecolinky', 'contato@linkytech.com', 'linkytech')");
+        "insert into user(name, cpf, age, email, password) values('ecolinky', '222.222.222-22', '40', 'contato@linkytech.com', 'linkytech')");
   }
 
   // insere o usuário
   Future<int> saveUser(User u) async {
+    var resApi = await HttpService.createUser(u);
+    print(u);
     var dbClient = await db;
     int res = await dbClient.insert("user", u.toMap());
     return res;
@@ -59,6 +62,8 @@ class UserHelper {
     if (list.length > 0) {
       user = User(list[0]["id"],
           list[0]["name"],
+          list[0]["cpf"],
+          list[0]["age"],
           list[0]["email"],
           list[0]["password"]
       );
