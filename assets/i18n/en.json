@@ -1,0 +1,22 @@
+{
+    "home":"Home",
+    "profile":"Profile",
+    "exit":"Exit",
+    "login":"Login",
+    "register":"Register",
+    "success":"Success",
+    "success_message":"Successful registration",
+    "error":"Error",
+    "error_message":"Error registering user",
+    "register_user":"Register user",
+    "name":"Name",
+    "email":"E-mail",
+    "password":"Password",
+    "note":"Password must be at least 6 characters long!",
+    "close":"Close",
+    "error_login":"Error during login",
+    "error_mesage_login":"Incorrect username or password",
+    "error_email":"E-mail must be at least 15 characters long",
+    "password_invalid":"Invalid Password",
+    "age":"Age"
+}
