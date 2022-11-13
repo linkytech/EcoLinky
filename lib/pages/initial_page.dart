@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ecolinky/pages/login_page.dart';
 import 'package:ecolinky/pages/register_page.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 class InitialPage extends StatelessWidget {
   const InitialPage({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class InitialPage extends StatelessWidget {
                         elevation: MaterialStateProperty.all(0),
                         minimumSize: MaterialStateProperty.all(Size(290, 45))),
                     child: Text(
-                      'Entrar',
+                      FlutterI18n.translate(context, "login"),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 24,
@@ -78,7 +79,7 @@ class InitialPage extends StatelessWidget {
                         elevation: MaterialStateProperty.all(0),
                         minimumSize: MaterialStateProperty.all(Size(290, 45))),
                     child: Text(
-                      'Registrar',
+                      FlutterI18n.translate(context, "register"),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 24,

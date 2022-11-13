@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ecolinky/Models/user_model.dart';
 import 'package:ecolinky/components/explore.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 class HomePage extends StatefulWidget {
   final User? user;
@@ -26,18 +27,18 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: FlutterI18n.translate(context, "home"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Perfil',
+            label: FlutterI18n.translate(context, "profile"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.logout),
-            label: 'Sair',
+            label: FlutterI18n.translate(context, "exit"),
           ),
         ],
       ),
