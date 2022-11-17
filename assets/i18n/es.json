@@ -1,0 +1,22 @@
+{
+  "home":"Inicio",
+  "profile":"Perfil",
+  "exit":"Salir",
+  "login":"Accesso",
+  "register":"Registrar",
+  "success":"Éxito",
+  "success_message":"Registro realizado con éxito",
+  "error":"Error",
+  "error_message":"Error al registrar el usuario",
+  "register_user":"Registrar el usuario",
+  "name":"Nombre",
+  "email":"E-mail",
+  "password":"Contrseña",
+  "note":"La contraseña debe tener al menos 6 caracteres!",
+  "close":"Cerrar",
+  "error_login":"Error durante el inicio de sesión",
+  "error_mesage_login":"Usuário ou senha incorreto",
+  "error_email":"El correo electrónico debe tener al menos 15 caracteres",
+  "password_invalid":"Contraseña Inválida",
+  "age":"Edad"
+}

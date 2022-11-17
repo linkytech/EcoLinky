@@ -1,0 +1,22 @@
+{
+  "home":"Início",
+  "profile":"Perfil",
+  "exit":"Sair",
+  "login":"Login",
+  "register":"Registrar",
+  "success":"Sucesso",
+  "success_message":"Registro realizado com sucesso",
+  "error":"Erro",
+  "error_message":"Erro ao registrar usuário",
+  "register_user":"Registrar Usuário",
+  "name":"Nome",
+  "email":"E-mail",
+  "password":"Senha",
+  "note":"Senha deve ter no mínimo 6 caracteres!",
+  "close":"Fechar",
+  "error_login":"Erro durante o login",
+  "error_mesage_login":"Usuário ou senha incorreto",
+  "error_email":"E-mail deve possuir no mínimo 15 caracteres",
+  "password_invalid":"Senha Inválida",
+  "age":"Idade"
+}
