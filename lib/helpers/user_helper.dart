@@ -23,9 +23,9 @@ class UserHelper {
 
   void _onCreate(Database db, int version) async {
     await db.execute(
-        "CREATE TABLE user(id INTEGER PRIMARY KEY autoincrement, name TEXT, cpf TEXT, age TEXT, email TEXT, password TEXT)");
+        "CREATE TABLE user(id INTEGER PRIMARY KEY autoincrement, name TEXT, cpf TEXT, email TEXT, password TEXT)");
     await db.execute(
-        "insert into user(name, cpf, age, email, password) values('ecolinky', '222.222.222-22', '40', 'contato@linkytech.com', 'linkytech')");
+        "insert into user(name, cpf, email, password) values('ecolinky', '222.222.222-22', 'contato@linkytech.com', 'linkytech')");
   }
 
   // insere o usuário
@@ -63,7 +63,6 @@ class UserHelper {
       user = User(list[0]["id"],
           list[0]["name"],
           list[0]["cpf"],
-          list[0]["age"],
           list[0]["email"],
           list[0]["password"]
       );

@@ -2,7 +2,6 @@ class Tennant {
   int _id;
   String _slug;
   String _name;
-  String _main_color;
   int _status;
   String _description;
   int _user_id;
@@ -12,7 +11,6 @@ class Tennant {
     this._id,
     this._slug,
     this._name,
-    this._main_color,
     this._status,
     this._description,
     this._user_id,
@@ -28,8 +26,6 @@ class Tennant {
 
   String get name => _name;
 
-  String get main_color => _main_color;
-
   int get status => _status;
 
   String get description => _description;
@@ -41,7 +37,6 @@ class Tennant {
       json['id'],
       json['slug'],
       json['name'],
-      json['main_color'],
       json['status'],
       json['description'],
       json['user_id'],

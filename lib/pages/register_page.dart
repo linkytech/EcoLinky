@@ -14,7 +14,6 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   String _name = "";
   String _cpf = "";
-  String _age = "";
   String _email = "";
   String _password = "";
 
@@ -48,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
     if (form!.validate()) {
       form.save();
 
-      var user = User(0, _name, _cpf, _age, _email, _password);
+      var user = User(0, _name, _cpf, _email, _password);
       user.id = await userHelper.saveUser(user);
 
       if (user.id > 0) {
@@ -125,14 +124,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       TextFormField(
                         onSaved: (val) => _cpf = val.toString(),
                         decoration: InputDecoration(labelText: "CPF"),
-                      ),
-                      TextFormField(
-                        onSaved: (val) => _age = val.toString(),
-                        decoration: InputDecoration(
-                            labelText: FlutterI18n.translate(context, "age")),
-                      ),
-                      SizedBox(
-                        height: 15,
                       ),
                       SizedBox(
                         height: 15,

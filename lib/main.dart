@@ -31,12 +31,13 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: [
         flutterDelegate,
         GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: [
         const Locale('en'),
-        const Locale('es'),
-        const Locale('pt'),
+        //const Locale('es'),
+        //const Locale('pt'),
       ],
     );
   }
