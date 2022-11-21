@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: FlutterI18n.translate(context, "profile"),
+            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.logout),

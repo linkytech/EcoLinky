@@ -31,7 +31,7 @@ class UserHelper {
   // insere o usuário
   Future<int> saveUser(User u) async {
     var resApi = await HttpService.createUser(u);
-    print(u);
+    print(resApi);
     var dbClient = await db;
     int res = await dbClient.insert("user", u.toMap());
     return res;
@@ -62,7 +62,6 @@ class UserHelper {
     if (list.length > 0) {
       user = User(list[0]["id"],
           list[0]["name"],
-          list[0]["cpf"],
           list[0]["email"],
           list[0]["password"]
       );
