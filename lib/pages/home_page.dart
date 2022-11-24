@@ -1,3 +1,4 @@
+import 'package:ecolinky/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:ecolinky/Models/user_model.dart';
 import 'package:ecolinky/components/explore.dart';
@@ -13,21 +14,34 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  int _selection = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.greenAccent[700],
         title: Text('EcoLinky'),
       ),
-      body: Column(
-        children: [
-          Flexible(
-            child: Explore(),
-          ),
+      body: IndexedStack(
+        index: _selection,
+        children: <Widget>[
+          HomeExplorer(),
+          ProfilePage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
+        backgroundColor: Colors.greenAccent[700],
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.black,
+        currentIndex: _selection,
+        onTap: (option) {
+          setState(() {
+            _selection = option;
+          });
+        },
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: FlutterI18n.translate(context, "home"),
@@ -35,7 +49,6 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: FlutterI18n.translate(context, "profile"),
-            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.logout),
@@ -46,3 +59,24 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+class HomeExplorer extends StatefulWidget {
+  const HomeExplorer({Key? key}) : super(key: key);
+
+  @override
+  State<HomeExplorer> createState() => _HomeExplorerState();
+}
+
+class _HomeExplorerState extends State<HomeExplorer> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Flexible(
+          child: Explore(),
+        ),
+      ],
+    );
+  }
+}
+

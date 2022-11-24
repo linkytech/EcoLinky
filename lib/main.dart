@@ -21,12 +21,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.greenAccent[700]
+        )
+      ),
       debugShowCheckedModeBanner: false,
       title: 'EcoLinky',
       routes: routes,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
       home: SplashPage(),
       localizationsDelegates: [
         flutterDelegate,

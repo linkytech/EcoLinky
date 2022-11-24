@@ -44,7 +44,7 @@ class _SplashPageState extends State<SplashPage>
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        color: Colors.greenAccent,
+        color: Colors.greenAccent[700],
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

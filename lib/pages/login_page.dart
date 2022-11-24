@@ -123,8 +123,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     ElevatedButton(
                       onPressed: _validarLogin,
-                      child: Text(FlutterI18n.translate(context, "login"),
-                          style: style),
+                      child: Text(
+                        FlutterI18n.translate(context, "login"),
+                        style: style,
+                      ),
                     ),
                     const SizedBox(
                       height: 15,

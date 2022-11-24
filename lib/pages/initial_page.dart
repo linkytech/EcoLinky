@@ -18,12 +18,13 @@ class InitialPage extends StatelessWidget {
             width: 350,
             height: 500,
             decoration: BoxDecoration(
-                color: Colors.green[200],
-                borderRadius: BorderRadius.circular(50),
-                border: Border.all(
-                  color: Colors.green,
-                  width: 2,
-                )),
+              color: Colors.greenAccent[700],
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(
+                color: Colors.greenAccent,
+                width: 2,
+              ),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
