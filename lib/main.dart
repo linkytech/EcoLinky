@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        fontFamily: 'ExpletusSans',
         primarySwatch: Colors.teal,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.greenAccent[700]
