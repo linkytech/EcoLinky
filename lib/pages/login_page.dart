@@ -123,6 +123,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     ElevatedButton(
                       onPressed: _validarLogin,
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Color.fromARGB(255, 0, 217, 83))),
                       child: Text(
                         FlutterI18n.translate(context, "login"),
                         style: style,

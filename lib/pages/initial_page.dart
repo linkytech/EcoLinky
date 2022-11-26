@@ -18,10 +18,10 @@ class InitialPage extends StatelessWidget {
             width: 350,
             height: 500,
             decoration: BoxDecoration(
-              color: Colors.greenAccent[700],
+              color: Color.fromARGB(255, 228, 228, 228),
               borderRadius: BorderRadius.circular(50),
               border: Border.all(
-                color: Colors.greenAccent,
+                color: Color.fromARGB(255, 0, 0, 0),
                 width: 2,
               ),
             ),
@@ -33,7 +33,7 @@ class InitialPage extends StatelessWidget {
                   width: 300,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.green[500],
+                    color: Color.fromARGB(255, 0, 217, 83),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   margin: EdgeInsets.all(8),
@@ -48,7 +48,9 @@ class InitialPage extends StatelessWidget {
                     },
                     style: ButtonStyle(
                         elevation: MaterialStateProperty.all(0),
-                        minimumSize: MaterialStateProperty.all(Size(290, 45))),
+                        minimumSize: MaterialStateProperty.all(Size(290, 45)),
+                        backgroundColor: MaterialStateProperty.all(
+                            Color.fromARGB(255, 0, 217, 83))),
                     child: Text(
                       FlutterI18n.translate(context, "login"),
                       style: TextStyle(
@@ -63,7 +65,7 @@ class InitialPage extends StatelessWidget {
                   width: 300,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.green[500],
+                    color: Color.fromARGB(255, 0, 217, 83),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   margin: EdgeInsets.all(8),
@@ -78,7 +80,9 @@ class InitialPage extends StatelessWidget {
                     },
                     style: ButtonStyle(
                         elevation: MaterialStateProperty.all(0),
-                        minimumSize: MaterialStateProperty.all(Size(290, 45))),
+                        minimumSize: MaterialStateProperty.all(Size(290, 45)),
+                        backgroundColor: MaterialStateProperty.all(
+                            Color.fromARGB(255, 0, 217, 83))),
                     child: Text(
                       FlutterI18n.translate(context, "register"),
                       style: TextStyle(
