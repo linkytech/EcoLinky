@@ -18,5 +18,6 @@
   "error_mesage_login":"Usuário ou senha incorreto",
   "error_email":"El correo electrónico debe tener al menos 15 caracteres",
   "password_invalid":"Contraseña Inválida",
-  "age":"Edad"
+  "age":"Edad",
+  "screen under construction":"pantalla en construccion"
 }

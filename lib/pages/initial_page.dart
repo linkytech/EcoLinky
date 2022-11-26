@@ -47,10 +47,14 @@ class InitialPage extends StatelessWidget {
                       );
                     },
                     style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(0),
-                        minimumSize: MaterialStateProperty.all(Size(290, 45)),
-                        backgroundColor: MaterialStateProperty.all(
-                            Color.fromARGB(255, 0, 217, 83))),
+                      elevation: MaterialStateProperty.all(0),
+                      minimumSize: MaterialStateProperty.all(
+                        Size(290, 45),
+                      ),
+                      backgroundColor: MaterialStateProperty.all(
+                        Color.fromARGB(255, 0, 217, 83),
+                      ),
+                    ),
                     child: Text(
                       FlutterI18n.translate(context, "login"),
                       style: TextStyle(
@@ -79,10 +83,14 @@ class InitialPage extends StatelessWidget {
                       );
                     },
                     style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(0),
-                        minimumSize: MaterialStateProperty.all(Size(290, 45)),
-                        backgroundColor: MaterialStateProperty.all(
-                            Color.fromARGB(255, 0, 217, 83))),
+                      elevation: MaterialStateProperty.all(0),
+                      minimumSize: MaterialStateProperty.all(
+                        Size(290, 45),
+                      ),
+                      backgroundColor: MaterialStateProperty.all(
+                        Color.fromARGB(255, 0, 217, 83),
+                      ),
+                    ),
                     child: Text(
                       FlutterI18n.translate(context, "register"),
                       style: TextStyle(

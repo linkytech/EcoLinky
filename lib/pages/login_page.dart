@@ -31,8 +31,12 @@ class _LoginPageState extends State<LoginPage> {
       var u = await userHelper.validateLogin(_email!, _password!);
 
       if (u != null) {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => HomePage(user: u)));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(user: u),
+          ),
+        );
       } else {
         showDialog(
           context: context,
@@ -68,10 +72,13 @@ class _LoginPageState extends State<LoginPage> {
             : null;
       },
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          labelText: FlutterI18n.translate(context, "email"),
-          suffixIcon: Icon(Icons.login),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(32))),
+        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        labelText: FlutterI18n.translate(context, "email"),
+        suffixIcon: Icon(Icons.login),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(32),
+        ),
+      ),
     );
     final passwordField = TextFormField(
       obscureText: true,
@@ -124,8 +131,10 @@ class _LoginPageState extends State<LoginPage> {
                     ElevatedButton(
                       onPressed: _validarLogin,
                       style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              Color.fromARGB(255, 0, 217, 83))),
+                        backgroundColor: MaterialStateProperty.all(
+                          Color.fromARGB(255, 0, 217, 83),
+                        ),
+                      ),
                       child: Text(
                         FlutterI18n.translate(context, "login"),
                         style: style,

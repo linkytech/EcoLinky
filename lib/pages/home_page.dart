@@ -1,3 +1,4 @@
+import 'package:ecolinky/pages/login_page.dart';
 import 'package:ecolinky/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:ecolinky/Models/user_model.dart';
@@ -14,7 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   int _selection = 0;
 
   @override
@@ -37,9 +37,11 @@ class _HomePageState extends State<HomePage> {
         selectedItemColor: Colors.black,
         currentIndex: _selection,
         onTap: (option) {
-          setState(() {
-            _selection = option;
-          });
+          setState(
+            () {
+              _selection = option;
+            },
+          );
         },
         items: [
           BottomNavigationBarItem(
@@ -49,10 +51,6 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: FlutterI18n.translate(context, "profile"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.logout),
-            label: FlutterI18n.translate(context, "exit"),
           ),
         ],
       ),
@@ -79,4 +77,3 @@ class _HomeExplorerState extends State<HomeExplorer> {
     );
   }
 }
-

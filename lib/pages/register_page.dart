@@ -54,8 +54,12 @@ class _RegisterPageState extends State<RegisterPage> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text(FlutterI18n.translate(context, "success")),
-              content: Text(FlutterI18n.translate(context, "success_message")),
+              title: Text(
+                FlutterI18n.translate(context, "success"),
+              ),
+              content: Text(
+                FlutterI18n.translate(context, "success_message"),
+              ),
             );
           },
         );
@@ -64,8 +68,12 @@ class _RegisterPageState extends State<RegisterPage> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text(FlutterI18n.translate(context, "error")),
-              content: Text(FlutterI18n.translate(context, "error_message")),
+              title: Text(
+                FlutterI18n.translate(context, "error"),
+              ),
+              content: Text(
+                FlutterI18n.translate(context, "error_message"),
+              ),
             );
           },
         );
@@ -115,7 +123,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       TextFormField(
                         onSaved: (val) => _name = val.toString(),
                         decoration: InputDecoration(
-                            labelText: FlutterI18n.translate(context, "name")),
+                          labelText: FlutterI18n.translate(context, "name"),
+                        ),
                       ),
                       SizedBox(
                         height: 15,
@@ -123,7 +132,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       TextFormField(
                         onSaved: (val) => _email = val.toString(),
                         decoration: InputDecoration(
-                            labelText: FlutterI18n.translate(context, "email")),
+                          labelText: FlutterI18n.translate(context, "email"),
+                        ),
                       ),
                       SizedBox(
                         height: 20,
@@ -132,8 +142,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         obscureText: true,
                         onSaved: (val) => _password = val.toString(),
                         decoration: InputDecoration(
-                            labelText:
-                                FlutterI18n.translate(context, "password")),
+                          labelText: FlutterI18n.translate(context, "password"),
+                        ),
                       ),
                       SizedBox(
                         height: 20,
@@ -152,13 +162,15 @@ class _RegisterPageState extends State<RegisterPage> {
                             child: Container(),
                           ),
                           TextButton(
-                            child:
-                                Text(FlutterI18n.translate(context, "close")),
+                            child: Text(
+                              FlutterI18n.translate(context, "close"),
+                            ),
                             onPressed: _closeRegister,
                           ),
                           TextButton(
                             child: Text(
-                                FlutterI18n.translate(context, "register")),
+                              FlutterI18n.translate(context, "register"),
+                            ),
                             onPressed: _registerUser,
                           ),
                         ],

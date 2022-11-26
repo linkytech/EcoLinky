@@ -49,8 +49,9 @@ class _SplashPageState extends State<SplashPage>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             RotationTransition(
-                turns: turnsTween.animate(controller),
-                child: Image.asset("assets/images/eco512.png")),
+              turns: turnsTween.animate(controller),
+              child: Image.asset("assets/images/eco512.png"),
+            ),
             SizedBox(
               height: 40,
             ),

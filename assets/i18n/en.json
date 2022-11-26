@@ -18,5 +18,6 @@
     "error_mesage_login":"Incorrect username or password",
     "error_email":"E-mail must be at least 15 characters long",
     "password_invalid":"Invalid Password",
-    "age":"Age"
+    "age":"Age",
+    "screen under construction":"screen under construction"
 }
