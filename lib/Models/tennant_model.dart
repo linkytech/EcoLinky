@@ -4,7 +4,6 @@ class Tennant {
   String _name;
   int _status;
   String _description;
-  int _user_id;
 
   // construtor
   Tennant(
@@ -13,7 +12,6 @@ class Tennant {
     this._name,
     this._status,
     this._description,
-    this._user_id,
   );
 
   // setter para o id
@@ -30,8 +28,6 @@ class Tennant {
 
   String get description => _description;
 
-  int get user_id => _user_id;
-
   factory Tennant.fromJson(Map<String, dynamic> json) {
     return Tennant(
       json['id'],
@@ -39,7 +35,6 @@ class Tennant {
       json['name'],
       json['status'],
       json['description'],
-      json['user_id'],
     );
   }
 }

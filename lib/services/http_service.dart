@@ -5,8 +5,8 @@ import 'package:ecolinky/Models/user_model.dart';
 import 'package:http/http.dart';
 
 class HttpService {
-  static final String baseUrl = "http://187.45.102.25:3333/api";
-
+  //static final String baseUrl = "http://187.45.102.25:3333/api";
+  static final String baseUrl = "http://192.168.21.1:3333/api";
   static Future<List<Tennant>> getTennants() async {
     Response res = await get(
       Uri.parse(baseUrl + "/tennant"),
