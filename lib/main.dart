@@ -8,23 +8,28 @@ import 'package:flutter_i18n/flutter_i18n.dart';
 
 void main() {
   final FlutterI18nDelegate flutterDelegate = FlutterI18nDelegate(
-      translationLoader: FileTranslationLoader(
-          useCountryCode: false, fallbackFile: 'en', basePath: 'assets/i18n'));
+    translationLoader: FileTranslationLoader(
+        useCountryCode: false, fallbackFile: 'en', basePath: 'assets/i18n'),
+  );
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp(flutterDelegate));
+  runApp(
+    MyApp(flutterDelegate),
+  );
 }
 
 class MyApp extends StatelessWidget {
   final FlutterI18nDelegate flutterDelegate;
+
   MyApp(this.flutterDelegate);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          fontFamily: 'ExpletusSans',
-          primarySwatch: Colors.teal,
-          appBarTheme: AppBarTheme(backgroundColor: Colors.greenAccent[700])),
+        fontFamily: 'ExpletusSans',
+        primarySwatch: Colors.teal,
+        appBarTheme: AppBarTheme(backgroundColor: Colors.greenAccent[700]),
+      ),
       debugShowCheckedModeBanner: false,
       title: 'EcoLinky',
       routes: routes,

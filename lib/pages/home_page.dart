@@ -1,4 +1,3 @@
-import 'package:ecolinky/pages/login_page.dart';
 import 'package:ecolinky/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:ecolinky/Models/user_model.dart';

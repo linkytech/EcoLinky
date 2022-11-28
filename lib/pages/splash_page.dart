@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:ecolinky/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -37,7 +36,6 @@ class _SplashPageState extends State<SplashPage>
 
   @override
   Widget build(BuildContext context) {
-    // reproduzir um fullscreen
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
     return Scaffold(

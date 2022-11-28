@@ -42,9 +42,12 @@ class _LoginPageState extends State<LoginPage> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text(FlutterI18n.translate(context, "error_login")),
-              content:
-                  Text(FlutterI18n.translate(context, "error_mesage_login")),
+              title: Text(
+                FlutterI18n.translate(context, "error_login"),
+              ),
+              content: Text(
+                FlutterI18n.translate(context, "error_mesage_login"),
+              ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(15),
