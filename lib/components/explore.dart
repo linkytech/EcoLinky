@@ -17,6 +17,8 @@ class _BuildListViewState extends State {
         tennants = List.from(response);
       });
     });
+
+    print(tennants);
   }
 
   initState() {
@@ -42,7 +44,7 @@ class _BuildListViewState extends State {
               ),
               elevation: MaterialStatePropertyAll<double>(0.0),
               shadowColor: MaterialStatePropertyAll<Color>(Colors.transparent),
-              backgroundColor: MaterialStatePropertyAll<Color>(Colors.black),
+              backgroundColor: MaterialStatePropertyAll<Color>(Colors.white),
               shape: MaterialStatePropertyAll<OutlinedBorder>(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
@@ -54,7 +56,7 @@ class _BuildListViewState extends State {
                 Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Colors.lightGreen,
+                    color: Colors.greenAccent[700],
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(50),
                       bottomRight: Radius.circular(50),
@@ -75,7 +77,7 @@ class _BuildListViewState extends State {
                           Text(
                             tennants[index].name,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                           ),
                         ],
@@ -85,7 +87,7 @@ class _BuildListViewState extends State {
                           Text(
                             tennants[index].description,
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                           ),
                         ],

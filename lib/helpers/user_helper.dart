@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:ecolinky/services/http_service.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -30,8 +31,13 @@ class UserHelper {
   }
 
   Future<int> saveUser(User u) async {
-    var dbClient = await db;
-    int res = await dbClient.insert("user", u.toMap());
+    String resApi = await HttpService.createUser(u);
+    int res = 0;
+    if (resApi == 'User created!') {
+      var dbClient = await db;
+      res = await dbClient.insert("user", u.toMap());
+      return res;
+    }
     return res;
   }
 
@@ -52,8 +58,9 @@ class UserHelper {
     var dbClient = await db;
     User? user;
     List<Map> list = await dbClient.rawQuery(
-        "select * from user where email = ? and password = ?",
-        [email, password]);
+      "select * from user where email = ? and password = ?",
+      [email, password],
+    );
     if (list.length > 0) {
       user = User(
         list[0]["id"],

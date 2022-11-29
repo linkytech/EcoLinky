@@ -7,6 +7,7 @@ import 'package:http/http.dart';
 class HttpService {
   //static final String baseUrl = "http://187.45.102.25:3333/api";
   static final String baseUrl = "http://192.168.21.1:3333/api";
+
   static Future<List<Tennant>> getTennants() async {
     Response res = await get(
       Uri.parse(baseUrl + "/tennant"),
@@ -26,12 +27,15 @@ class HttpService {
   }
 
   static Future<String> createUser(User user) async {
-    Response res = await post(Uri.parse(baseUrl + "/user"),
-        headers: <String, String>{
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode(user.toMap()));
-    print("res ${res}");
+    Response res = await post(
+      Uri.parse(baseUrl + "/user"),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(
+        user.toMap(),
+      ),
+    );
     if (res.statusCode == 200) {
       return "User created!";
     } else {
