@@ -17,8 +17,6 @@ class _BuildListViewState extends State {
         tennants = List.from(response);
       });
     });
-
-    print(tennants);
   }
 
   initState() {
