@@ -50,13 +50,15 @@ class _BuildListViewState extends State {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
+              side: MaterialStatePropertyAll<BorderSide>(
+                  BorderSide(width: 1, color: Colors.black)),
             ),
             child: Column(
               children: [
                 Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Colors.greenAccent[700],
+                    color: Colors.white,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(50),
                       bottomRight: Radius.circular(50),
@@ -73,22 +75,26 @@ class _BuildListViewState extends State {
                   child: Column(
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            tennants[index].name,
-                            style: TextStyle(
-                              color: Colors.black,
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 8.0, 0, 5.0),
+                            child: Text(
+                              tennants[index].name,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                              ),
                             ),
                           ),
                         ],
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             tennants[index].description,
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
+                            style: TextStyle(color: Colors.black, fontSize: 16),
                           ),
                         ],
                       ),
